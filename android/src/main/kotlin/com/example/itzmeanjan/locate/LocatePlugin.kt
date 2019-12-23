@@ -194,7 +194,7 @@ class LocatePlugin(private val registrar: Registrar, private val flutterView: Fl
     private fun createLocationRequest(): LocationRequest {
         return LocationRequest.create().apply {
             interval = 10000
-            fastestInterval = 5000
+            fastestInterval = 1000
             priority = LocationRequest.PRIORITY_HIGH_ACCURACY
         }
     }
@@ -222,7 +222,7 @@ class LocatePlugin(private val registrar: Registrar, private val flutterView: Fl
 
     private fun startLocationManagerBasedLocationUpdates(locationManager: LocationManager, provider: String, permission: String, locationListener: MyLocationListener) {
         if (ContextCompat.checkSelfPermission(activity.applicationContext, permission) == PackageManager.PERMISSION_GRANTED)
-            locationManager.requestLocationUpdates(provider, 5000, 1.toFloat(), locationListener)
+            locationManager.requestLocationUpdates(provider, 1000, 0.toFloat(), locationListener)
     }
 
     private fun enableLocation() {
